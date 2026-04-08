@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --surface: #fcf8ff;
+  --on-surface: #1b163c;
+  --on-surface-variant: #484550;
+  --surface-container: #f1ebff;
+  --surface-container-low: #f7f1ff;
+  --surface-container-lowest: #ffffff;
+  --surface-container-high: #ebe5ff;
+  --outline-variant: #c9c4d2;
+  --primary: #534790;
+  --on-primary: #ffffff;
+  --primary-fixed: #e6deff;
+  --primary-container: #6c5faa;
+  --on-primary-container: #eee7ff;
+  --secondary: #5f588d;
+  --secondary-fixed: #e5deff;
+  --tertiary: #544c75;
+  --tertiary-fixed: #e7deff;
+  --secondary-container: #cbc2fe;
+  --error: #ba1a1a;
+  --error-container: #ffdad6;
+  --nav-bg: rgb(255 255 255 / 0.7);
+  --logo-text: #534790;
+  --faq-accent: var(--primary);
+  --stats-fg: #eee7ff;
+  --stats-fg-muted: rgb(238 231 255 / 0.8);
+  --footer-brand: #534790;
+  --footer-muted: #8880b8;
+  --hero-blob-primary: var(--primary-fixed);
+  --hero-blob-secondary: var(--secondary-container);
+  --input-text: var(--on-surface);
+  --input-placeholder: var(--on-surface-variant);
+}
+
+html.dark {
+  --surface: #141126;
+  --on-surface: #ffffff;
+  --on-surface-variant: #938f99;
+  --surface-container: #1f1c30;
+  --surface-container-low: #1a162e;
+  --surface-container-lowest: #141126;
+  --surface-container-high: #251f40;
+  --outline-variant: #2e2a4a;
+  --primary: #6c5faa;
+  --on-primary: #ffffff;
+  --primary-fixed: #6c5faa;
+  --primary-container: #6c5faa;
+  --on-primary-container: #eee7ff;
+  --secondary: #8880b8;
+  --secondary-fixed: #e5deff;
+  --tertiary: #544c75;
+  --tertiary-fixed: #e7deff;
+  --secondary-container: #1f1c30;
+  --error: #ba1a1a;
+  --error-container: #ffdad6;
+  --nav-bg: rgb(26 22 46 / 0.7);
+  --logo-text: #ffffff;
+  --faq-accent: #d0bcff;
+  --stats-fg: #ffffff;
+  --stats-fg-muted: rgb(255 255 255 / 0.8);
+  --footer-brand: #d0bcff;
+  --footer-muted: #938f99;
+  --hero-blob-primary: var(--primary-fixed);
+  --hero-blob-secondary: var(--secondary-container);
+  --input-text: #ffffff;
+  --input-placeholder: rgb(147 143 153 / 0.5);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-surface: var(--surface);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-outline-variant: var(--outline-variant);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-fixed: var(--primary-fixed);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-secondary: var(--secondary);
+  --color-secondary-fixed: var(--secondary-fixed);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-fixed: var(--tertiary-fixed);
+  --color-secondary-container: var(--secondary-container);
+  --color-error: var(--error);
+  --color-error-container: var(--error-container);
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --radius-3xl: 3rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--surface);
+  color: var(--on-surface);
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.blob-bg {
+  position: absolute;
+  z-index: -1;
+  filter: blur(60px);
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+html.dark .blob-bg {
+  filter: blur(80px);
+  opacity: 0.2;
+}
+
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined", sans-serif;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+  vertical-align: middle;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
 }
