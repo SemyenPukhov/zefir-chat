@@ -1,11 +1,21 @@
 /** Сообщество ВК по умолчанию (подвал, sameAs, если env не задан). */
 export const DEFAULT_VK_COMMUNITY_URL = "https://vk.com/club237508945";
 
+/** Telegram (чат) по умолчанию, если env не задан. */
+export const DEFAULT_TELEGRAM_URL = "https://t.me/+U2rSAn3L9R05YTQy";
+
 /** URL ВК: из env или сообщество по умолчанию. */
 export function getVkUrl(): string {
   const raw = process.env.NEXT_PUBLIC_VK_URL?.trim();
   if (raw) return raw;
   return DEFAULT_VK_COMMUNITY_URL;
+}
+
+/** URL Telegram: из env или ссылка по умолчанию. */
+export function getTelegramUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_TELEGRAM_URL?.trim();
+  if (raw) return raw;
+  return DEFAULT_TELEGRAM_URL;
 }
 
 /** Базовый URL сайта без завершающего слеша. */
@@ -20,7 +30,7 @@ export function getSiteUrl(): string {
 /** Ссылки для sameAs: env или реальные дефолты; без заглушек vk.com / t.me. */
 export function getOfficialSocialUrls(): string[] {
   const vk = getVkUrl();
-  const tg = process.env.NEXT_PUBLIC_TELEGRAM_URL?.trim();
+  const tg = getTelegramUrl();
   const out: string[] = [];
   if (vk !== "https://vk.com" && vk !== "http://vk.com") {
     out.push(vk);

@@ -5,15 +5,10 @@ import {
   TelegramMessengerIcon,
   VkMessengerIcon,
 } from "@/components/landing/messenger-social-icons";
-import { getVkUrl } from "@/lib/site";
+import { getTelegramUrl, getVkUrl } from "@/lib/site";
 
 const SOCIAL_VK_URL = getVkUrl();
-
-const SOCIAL_TELEGRAM_URL =
-  typeof process.env.NEXT_PUBLIC_TELEGRAM_URL === "string" &&
-  process.env.NEXT_PUBLIC_TELEGRAM_URL.trim() !== ""
-    ? process.env.NEXT_PUBLIC_TELEGRAM_URL.trim()
-    : "https://t.me";
+const SOCIAL_TELEGRAM_URL = getTelegramUrl();
 
 const AVATARS = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuC00hW9YSSSuPRXEof1TnfPt6-pxRcEhbmOXJHoD7rZ4uoMmjBjn1QXniAteX8eNWXRk7Rrv1T_m9ZgpHIe5zbfUcLbHe9lAOLDSp-wnLiX3zWJKvOAzATjpnlh74tPct3BNXyMP5dtV2T7WU47fCUuVttQTHUT0mf64S_HxasgvQwODb5ikfLMEUy6-1Jl2zwOsD0MmVbLVRnfc95QaghyOmuhGOAKV7WQ2c3hELfLFb4Mm0igbdcjiccv_1tLToOz7belL_TA0FZh",
