@@ -1,13 +1,17 @@
 import type { NextConfig } from "next";
 import path from "path";
+import { fileURLToPath } from "url";
 
-// npm workspaces hoist `next` to the repository root; Turbopack needs that root.
-const monorepoRoot = path.resolve(process.cwd(), "../..");
+const monorepoRoot = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "../..",
+);
 
 const nextConfig: NextConfig = {
   turbopack: {
     root: monorepoRoot,
   },
+  outputFileTracingRoot: monorepoRoot,
   images: {
     remotePatterns: [
       {

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LandingNav } from "@/components/landing/landing-nav";
+import { WaitlistCapture } from "@/components/landing/waitlist-capture";
 import {
   TelegramMessengerIcon,
   VkMessengerIcon,
@@ -15,36 +16,6 @@ const AVATARS = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBOFrwXurwr_mJIrIto-2Y8dOaYw_2NxZC6McqUXJD3kuE82mbGwhpLJhOzHS5pbi0EFdtSrZcxjAGV0PFWWTK_lhJGeAJ_O--omYh76HhvF5OHaSL0gaUrCevxC3dkfV7ZYo4scwLMwb4nzCAfKciV5DY9kOqyu_x_9JmZykLQah6PKd3OOyyJkkeXfuss8qMEmxJVaU3GTTm28uhEzA_RRVPi1ZTrC1QUvt4AyMWFSd9aO6Q1XLG18gIPsBKiMZxBBSKBYmpSpfHS",
   "https://lh3.googleusercontent.com/aida-public/AB6AXuDRDtOrhDHDOOZJUNNQFVTQMuZTF-jo0Bct7Ks8G0RZc4eJFMNEN6kNUniruK-p6FwnX8f6zQ0eAJKLJDMyXISf5QfKyOGU6Uclu1aufaVvrXtIjDGJkhfSdh2keH2LBVEGRraNwz6kP3zDgeef9s7nWPQUwmVNyvMKIvSKrZ678aEyBZTeIbJw6ZhDPhgqrcIe2tYgPSLUC7dkkot8YKqqgdkLdjV0LNOsrUd8L751TXBFk0W8b1KLrc3UlMNrYSgrsRZnAW0xYevb",
 ];
-
-function EmailCapture({ className }: { className?: string }) {
-  return (
-    <form
-      className={className}
-      action="#"
-      method="post"
-      aria-label="Подписка на запуск"
-    >
-      <label htmlFor="waitlist-email-hero" className="sr-only">
-        Электронная почта
-      </label>
-      <input
-        id="waitlist-email-hero"
-        name="email"
-        type="email"
-        autoComplete="email"
-        placeholder="Твой email"
-        className="h-[52px] flex-grow rounded-full border-2 border-outline-variant/30 bg-surface-container-lowest px-6 font-medium transition-colors focus:border-primary focus:outline-none focus:ring-0 dark:shadow-none"
-        style={{ color: "var(--input-text)" }}
-      />
-      <button
-        type="submit"
-        className="h-[52px] whitespace-nowrap rounded-full bg-primary px-8 font-bold text-on-primary transition-all hover:bg-primary/90 dark:shadow-lg dark:shadow-primary/20"
-      >
-        Жду запуск
-      </button>
-    </form>
-  );
-}
 
 export function LandingPage() {
   return (
@@ -75,7 +46,11 @@ export function LandingPage() {
             параллельно. Просто поболтайте или найдите своих людей. Короткие
             послания, голос и настроение — в одной ленте.
           </p>
-          <EmailCapture className="mb-12 flex w-full max-w-md flex-col gap-3 sm:flex-row" />
+          <WaitlistCapture
+            className="mb-12 flex w-full max-w-md justify-center"
+            ariaLabel="Подписка на запуск"
+            buttonClassName="h-[52px] whitespace-nowrap rounded-full bg-primary px-8 font-bold text-on-primary transition-all hover:bg-primary/90 dark:shadow-lg dark:shadow-primary/20"
+          />
           <div className="flex flex-col items-center gap-4">
             <div className="flex -space-x-3">
               {AVATARS.map((src, i) => (
@@ -110,7 +85,7 @@ export function LandingPage() {
           >
             Как это работает
           </h2>
-          <div className="relative flex flex-col items-start justify-between gap-12 md:flex-row md:gap-6">
+          <div className="relative flex flex-col items-center justify-between gap-12 md:flex-row md:items-start md:gap-6">
             <div className="absolute left-[10%] right-[10%] top-12 z-0 hidden h-[2px] border-t-2 border-dashed border-outline-variant/50 md:block dark:border-outline-variant/30" />
             {[
               {
@@ -269,31 +244,11 @@ export function LandingPage() {
             Оставь почту, и мы пришлем секретное приглашение, как только облако
             откроется.
           </p>
-          <form
-            className="mb-6 flex w-full max-w-md flex-col gap-3 sm:flex-row"
-            action="#"
-            method="post"
-            aria-label="Финальная подписка на запуск"
-          >
-            <label htmlFor="waitlist-email-footer" className="sr-only">
-              Электронная почта
-            </label>
-            <input
-              id="waitlist-email-footer"
-              name="email"
-              type="email"
-              autoComplete="email"
-              placeholder="Твой email"
-              className="h-[52px] flex-grow rounded-full border-2 border-outline-variant/30 bg-surface-container-lowest px-6 font-medium transition-colors focus:border-primary focus:outline-none focus:ring-0 dark:bg-surface-container"
-              style={{ color: "var(--input-text)" }}
-            />
-            <button
-              type="submit"
-              className="h-[52px] rounded-full bg-primary px-8 font-bold text-on-primary transition-all hover:bg-primary/90 dark:shadow-lg dark:shadow-primary/20"
-            >
-              Жду запуск
-            </button>
-          </form>
+          <WaitlistCapture
+            className="mb-6 flex w-full max-w-md justify-center"
+            ariaLabel="Финальная подписка на запуск"
+            buttonClassName="h-[52px] rounded-full bg-primary px-8 font-bold text-on-primary transition-all hover:bg-primary/90 dark:shadow-lg dark:shadow-primary/20"
+          />
           <p className="text-xs text-on-surface-variant/60">
             Нажимая кнопку, ты соглашаешься с политикой конфиденциальности.
           </p>

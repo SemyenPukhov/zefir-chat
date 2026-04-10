@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
+import Script from "next/script";
 import { JsonLdSite } from "@/components/json-ld";
 import { ThemeProvider } from "@/components/theme-provider";
 import { YandexMetrika } from "@/components/yandex-metrika";
@@ -79,6 +80,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${manrope.className} min-h-full antialiased`}>
+        <Script
+          src="https://tally.so/widgets/embed.js"
+          strategy="afterInteractive"
+        />
         <YandexMetrika />
         <JsonLdSite />
         <ThemeProvider>{children}</ThemeProvider>

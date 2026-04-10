@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { openTallyWaitlistPopup } from "@/lib/tally-waitlist";
 
 const SECTIONS = [
   { id: "about", label: "О проекте" },
@@ -161,6 +162,7 @@ export function LandingNav() {
           <button
             type="button"
             className="h-[52px] scale-95 rounded-full bg-primary px-6 font-bold text-on-primary transition-transform duration-300 hover:bg-primary/90 active:scale-90"
+            onClick={() => openTallyWaitlistPopup()}
           >
             Присоединиться
           </button>
